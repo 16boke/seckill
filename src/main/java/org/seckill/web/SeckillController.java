@@ -79,7 +79,9 @@ public class SeckillController {
 		}
 		SeckillResult<SeckillExecution> result;
 		try {
-			SeckillExecution seckillExecution = seckillServer.executeSeckill(seckillId, phone, md5);
+			//SeckillExecution seckillExecution = seckillServer.executeSeckill(seckillId, phone, md5);
+			//采用存储过程来实现秒杀
+			SeckillExecution seckillExecution = seckillServer.executeSeckillProcedure(seckillId, phone, md5);
 			result = new SeckillResult<SeckillExecution>(true, seckillExecution);
 		} catch (SeckillCloseException e) {
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.END);
